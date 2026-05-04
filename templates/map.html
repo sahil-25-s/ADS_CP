@@ -317,7 +317,7 @@ function runRangeQuery(lat, lng) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ lat, lng, radius: radiusDeg })
     }).then(r => r.json()).then(results => {
-        if (rangeCircle) rangeCircle.setMap(null);
+        if (rangeCircle) { rangeCircle.setMap(null); rangeCircle = null; }
         rangeCircle = new google.maps.Circle({
             map, center: { lat, lng }, radius: radiusMeters,
             strokeColor: '#9b59b6', strokeOpacity: 0.9, strokeWeight: 2,
